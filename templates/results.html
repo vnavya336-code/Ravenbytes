@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>ScholarBridge Results</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<header>
+    <h1>ScholarBridge</h1>
+    <p>Your Scholarship Results</p>
+</header>
+
+<div class="container">
+
+    <h2>Hello, {{ student.name }}!</h2>
+
+    <h3>Your Profile</h3>
+
+    <p>Education: {{ student.level }}</p>
+    <p>Category: {{ student.category }}</p>
+    <p>Family Income: ₹{{ student.income }}</p>
+    <p>Previous Marks: {{ student.marks }}%</p>
+
+    <h2>Scholarship Discovery</h2>
+
+    <p>Your profile has been received successfully.</p>
+
+    <p>Scholarship recommendations will appear here.</p>
+
+    <a href="/">← Back to Home</a>
+
+</div>
+
+</body>
+</html>
