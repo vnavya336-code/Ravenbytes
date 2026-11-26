@@ -1,55 +1,451 @@
-<!DOCTYPE html><html lang="en"><head>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ScholarBridge</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-</head><body><header>
-    <h1>ScholarBridge</h1>
-    <p>Discover Scholarships. Unlock Your Future.</p>
-</header>
+    <title>ScholarBridge | Scholarship Discovery</title>
 
-<div class="container">
+    <link rel="stylesheet"
+    href="{{ url_for('static', filename='style.css') }}">
+</head>
 
-    <h2>Find Scholarships For You</h2>
-    <p>Enter your details to discover scholarship opportunities.</p>
+<body>
 
-    <form action="/check" method="POST">
+<!-- NAVIGATION -->
 
-        <label>Student Name</label>
-        <input type="text" name="name" placeholder="Enter your name" required>
+<nav class="nav">
 
-        <label>State</label>
-        <input type="text" value="Karnataka" readonly>
+    <a class="brand" href="/">
+        <span class="brand-icon">✦</span> ScholarBridge
+    </a>
 
-        <label>Education Level</label>
-        <select name="level" required>
-            <option value="">Select Education</option>
-            <option value="10th">10th Passed</option>
-            <option value="12th">12th Passed</option>
-            <option value="Engineering">Engineering UG</option>
-        </select>
+    <div class="navlinks">
+        <a href="#how-it-works">How it works</a>
+        <a href="#checker">Eligibility checker</a>
+        <a href="/chat">AI Assistant ↗</a>
+    </div>
 
-        <label>Category</label>
-        <select name="category" required>
-            <option value="">Select Category</option>
-            <option value="SC">SC</option>
-            <option value="ST">ST</option>
-            <option value="OBC">OBC</option>
-            <option value="General">General</option>
-            <option value="Minority">Minority</option>
-        </select>
+</nav>
 
-        <label>Annual Family Income (₹)</label>
-        <input type="number" name="income" min="0" placeholder="Enter annual income" required>
 
-        <label>Previous Examination Marks (%)</label>
-        <input type="number" name="marks" min="0" max="100" step="0.01" placeholder="Enter percentage" required>
+<!-- HERO SECTION -->
 
-        <button type="submit">Find Scholarships</button>
+<section class="hero">
 
-    </form>
+    <div class="hero-copy">
 
-</div>
+        <div class="eyebrow">
+            KARNATAKA STUDENT SCHOLARSHIP DISCOVERY
+        </div>
+
+        <h1>
+            Find the support.<br>
+            <span>Build your future.</span>
+        </h1>
+
+        <p>
+            Discover scholarships and government schemes that match
+            your education journey. Less searching, clearer answers.
+        </p>
+
+        <div class="hero-actions">
+
+            <a href="#checker" class="btn primary">
+                Check my eligibility →
+            </a>
+
+            <a href="#how-it-works" class="btn ghost">
+                Explore how it works
+            </a>
+
+        </div>
+
+        <div class="trustline">
+            <span>✓</span> Official-source links
+            &nbsp; <span>✓</span> Personalized matching
+        </div>
+
+    </div>
+
+
+    <!-- HERO DESIGN CARD -->
+
+    <div class="hero-art">
+
+        <div class="orb orb1"></div>
+        <div class="orb orb2"></div>
+
+        <div class="glass-card">
+
+            <div class="mini-top">
+                <span>YOUR OPPORTUNITY HUB</span>
+                <span class="live-dot">● LIVE</span>
+            </div>
+
+            <div class="cap">🎓</div>
+
+            <h3>
+                Your next step<br>
+                starts here.
+            </h3>
+
+            <p>
+                One profile. Relevant opportunities.
+            </p>
+
+            <div class="progress">
+                <i></i>
+            </div>
+
+            <div class="glass-bottom">
+                <span>Student profile</span>
+                <span>→</span>
+                <span>Scheme matches</span>
+            </div>
+
+        </div>
+
+        <div class="float-tag tag1">
+            ✓ Eligibility matching
+        </div>
+
+        <div class="float-tag tag2">
+            ✦ AI assistance
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- STATISTICS -->
+
+<section class="stats">
+
+    <div>
+        <strong>10th</strong>
+        <span>SSLC Students</span>
+    </div>
+
+    <div>
+        <strong>12th</strong>
+        <span>PUC Students</span>
+    </div>
+
+    <div>
+        <strong>UG</strong>
+        <span>Undergraduate Students</span>
+    </div>
+
+    <div>
+        <strong>01</strong>
+        <span>Student Profile</span>
+    </div>
+
+</section>
+
+
+<!-- HOW IT WORKS -->
+
+<section class="section" id="how-it-works">
+
+    <div class="section-head">
+
+        <div class="eyebrow">
+            SIMPLE PROCESS
+        </div>
+
+        <h2>How it works</h2>
+
+        <p>
+            Find suitable scholarship opportunities in five simple steps.
+        </p>
+
+    </div>
+
+
+    <div class="steps">
+
+        <div class="step">
+            <div class="step-icon">👤</div>
+            <b>01. Enter Details</b>
+            <p>Provide your basic student information.</p>
+        </div>
+
+        <div class="step">
+            <div class="step-icon">🎓</div>
+            <b>02. Education</b>
+            <p>Select your education level and academic details.</p>
+        </div>
+
+        <div class="step">
+            <div class="step-icon">🔍</div>
+            <b>03. Eligibility Check</b>
+            <p>Check your profile against scholarship criteria.</p>
+        </div>
+
+        <div class="step">
+            <div class="step-icon">📋</div>
+            <b>04. View Matches</b>
+            <p>Discover potentially suitable scholarships.</p>
+        </div>
+
+        <div class="step">
+            <div class="step-icon">🚀</div>
+            <b>05. Apply</b>
+            <p>Visit official scheme websites for application details.</p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ELIGIBILITY CHECKER -->
+
+<section class="checker-section" id="checker">
+
+    <div class="checker-intro">
+
+        <div class="eyebrow">
+            PERSONALIZED SCHOLARSHIP DISCOVERY
+        </div>
+
+        <h2>
+            Find scholarships that match <span>you.</span>
+        </h2>
+
+        <p>
+            Enter your details to discover government scholarships
+            and financial assistance schemes based on your eligibility.
+        </p>
+
+        <div class="note">
+            🔒 Your information is used to check preliminary scholarship
+            eligibility. Final approval depends on official scheme rules
+            and document verification.
+        </div>
+
+    </div>
+
+
+    <!-- FORM CARD -->
+
+    <div class="form-card">
+
+        <div class="form-title">
+
+            <div>
+                <div class="eyebrow">STUDENT PROFILE</div>
+                <h3>Eligibility Checker</h3>
+            </div>
+
+            <div class="step-count">
+                COMPLETE YOUR DETAILS
+            </div>
+
+        </div>
+
+
+        <form action="/check" method="POST">
+
+            <label>
+                Student Name
+
+                <input
+                    type="text"
+                    name="name"
+                    placeholder="Enter your full name"
+                    required
+                >
+            </label>
+
+
+            <label>
+                Education Level
+
+                <select name="education" required>
+                    <option value="">Select education</option>
+                    <option value="10th passed">10th Passed (SSLC)</option>
+                    <option value="12th passed">2nd PUC Passed</option>
+                    <option value="Engineering UG">
+                        Engineering Undergraduate
+                    </option>
+                </select>
+            </label>
+
+
+            <div class="two">
+
+                <label>
+                    State
+
+                    <select name="state" required>
+                        <option value="Karnataka">Karnataka</option>
+                        <option value="Other">Other State</option>
+                    </select>
+                </label>
+
+                <label>
+                    Marks / Percentage
+
+                    <input
+                        type="number"
+                        name="marks"
+                        min="0"
+                        max="100"
+                        step="0.01"
+                        placeholder="Example: 85"
+                    >
+                </label>
+
+            </div>
+
+
+            <div class="two">
+
+                <label>
+                    Annual Family Income (₹)
+
+                    <input
+                        type="number"
+                        name="income"
+                        min="0"
+                        placeholder="Example: 200000"
+                    >
+                </label>
+
+                <label>
+                    Category
+
+                    <select name="category">
+                        <option value="">Select category</option>
+                        <option value="SC">SC</option>
+                        <option value="ST">ST</option>
+                        <option value="Category 1">Category 1</option>
+                        <option value="2A">2A</option>
+                        <option value="3A">3A</option>
+                        <option value="3B">3B</option>
+                        <option value="General">General</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </label>
+
+            </div>
+
+
+            <div class="two">
+
+                <label>
+                    Gender
+
+                    <select name="gender">
+                        <option value="">Select gender</option>
+                        <option value="Female">Female</option>
+                        <option value="Male">Male</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </label>
+
+                <label>
+                    Disability Status
+
+                    <select name="disability">
+                        <option value="">Select</option>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                    </select>
+                </label>
+
+            </div>
+
+
+            <div class="two">
+
+                <label>
+                    Religion
+
+                    <select name="religion">
+                        <option value="">Select religion</option>
+                        <option value="Muslim">Muslim</option>
+                        <option value="Christian">Christian</option>
+                        <option value="Sikh">Sikh</option>
+                        <option value="Buddhist">Buddhist</option>
+                        <option value="Jain">Jain</option>
+                        <option value="Parsi">Parsi</option>
+                        <option value="Hindu">Hindu</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </label>
+
+                <label>
+                    Parent Registered Labour Worker?
+
+                    <select name="labour_worker">
+                        <option value="">Select</option>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                    </select>
+                </label>
+
+            </div>
+
+
+            <div class="two">
+
+                <label>
+                    Child of an Ex-serviceman?
+
+                    <select name="ex_serviceman">
+                        <option value="">Select</option>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                    </select>
+                </label>
+
+                <label>
+                    AICTE Swanath Special Category?
+
+                    <select name="swanath">
+                        <option value="">Select</option>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                    </select>
+                </label>
+
+            </div>
+
+
+            <button type="submit" class="btn primary submit">
+                Find My Scholarships →
+            </button>
+
+            <p class="form-foot">
+                Your details are used for preliminary eligibility matching.
+            </p>
+
+        </form>
+
+    </div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    <div>
+        ✦ ScholarBridge | Helping Students Find Opportunities
+    </div>
+
+    <div>
+        Karnataka Student Scholarship Discovery · © 2026
+    </div>
+
+</footer>
+
 
 </body>
 </html>

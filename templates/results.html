@@ -1,39 +1,216 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
-    <title>ScholarBridge Results</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Your Scholarship Matches | ScholarBridge</title>
+
+    <link rel="stylesheet"
+    href="{{ url_for('static', filename='style.css') }}">
 </head>
 
 <body>
 
-<header>
-    <h1>ScholarBridge</h1>
-    <p>Your Scholarship Results</p>
-</header>
+<nav class="nav">
+    <a class="brand" href="/">✦ ScholarBridge</a>
 
-<div class="container">
+    <div class="navlinks">
+        <a href="/">Home</a>
+    </div>
+</nav>
 
-    <h2>Hello, {{ student.name }}!</h2>
+<main class="results-wrap">
 
-    <h3>Your Profile</h3>
+    <span class="eyebrow">YOUR SCHOLARSHIP REPORT</span>
 
-    <p>Education: {{ student.level }}</p>
-    <p>Category: {{ student.category }}</p>
-    <p>Family Income: ₹{{ student.income }}</p>
-    <p>Previous Marks: {{ student.marks }}%</p>
+    <h1>Here are your <span>scheme matches.</span></h1>
 
-    <h2>Scholarship Discovery</h2>
+    <p class="muted">
+        Hello {{ student.name }}.
+        These are preliminary results based on your details.
+    </p>
 
-    <p>Your profile has been received successfully.</p>
+    <div class="profile-strip">
 
-    <p>Scholarship recommendations will appear here.</p>
+        <b>{{ student.education }}</b>
+        <span>{{ student.state }}</span>
+        <span>Marks: {{ student.marks or "Not provided" }}%</span>
 
-    <a href="/">← Back to Home</a>
+        <span>
+            Income:
+            {{ "₹{:,.0f}".format(student.income|float)
+            if student.income else "Not provided" }}
+        </span>
 
-</div>
+    </div>
+
+    {% set yes_count = results|selectattr("eligible")|list|length %}
+
+    <div class="result-count">
+
+        <div>
+            <strong>{{ yes_count }}</strong>
+            <span>Potential matches</span>
+        </div>
+
+        <div>
+            <strong>{{ results|length - yes_count }}</strong>
+            <span>Need attention / not matching</span>
+        </div>
+
+    </div>
+
+    <h2>Scholarship recommendations</h2>
+
+    <div class="scheme-grid">
+
+        {% for item in results %}
+
+        <article class="scheme-card">
+
+            <div class="scheme-top">
+
+                <span class="pill {{ 'good' if item.eligible else 'warn' }}">
+                    {{ 'Potential match' if item.eligible else 'Not matching' }}
+                </span>
+
+                <span class="scheme-type">
+                    {{ item.scheme.education }}
+                </span>
+
+            </div>
+
+            <h3>{{ item.scheme.name }}</h3>
+
+            <p>{{ item.scheme.description }}</p>
+
+            <div class="deadline">
+
+                <span>APPLICATION LAST DATE</span>
+
+                <b>
+                    {% if item.scheme.deadline %}
+                        {{ item.scheme.deadline }}
+                    {% else %}
+                        Not verified yet
+                    {% endif %}
+                </b>
+
+            </div>
+
+            <div class="reason">
+
+                <b>
+                    {{ 'Eligibility note' if item.eligible
+                    else 'Why you may not be eligible' }}
+                </b>
+
+                <ul>
+                    {% for reason in item.reasons %}
+                        <li>{{ reason }}</li>
+                    {% endfor %}
+                </ul>
+
+            </div>
+
+            <div class="source">
+                Source: {{ item.scheme.source }}
+            </div>
+
+            <div style="display:flex; gap:10px; flex-wrap:wrap;">
+
+                {% if item.scheme.application_url %}
+
+                <a
+                    class="btn small primary"
+                    href="{{ item.scheme.application_url }}"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Apply / Student Portal ↗
+                </a>
+
+                {% endif %}
+
+                {% if item.scheme.info_url %}
+
+                <a
+                    class="btn small ghost"
+                    href="{{ item.scheme.info_url }}"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Official Details ↗
+                </a>
+
+                {% elif item.scheme.url %}
+
+                <a
+                    class="btn small ghost"
+                    href="{{ item.scheme.url }}"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Official Website ↗
+                </a>
+
+                {% endif %}
+
+            </div>
+
+            {% if not item.scheme.application_url %}
+
+            <p style="color:#f0d99c; font-size:11px; margin-top:12px;">
+                A direct application form has not been verified.
+                Please check the official details page.
+            </p>
+
+            {% endif %}
+
+        </article>
+
+        {% endfor %}
+
+    </div>
+
+    <div class="disclaimer">
+
+        <b>Important information</b>
+
+        <p>
+            Potential match does not mean official scholarship approval.
+            Final eligibility depends on the scheme's official conditions.
+        </p>
+
+        <p>
+            Application dates can change. Always check the latest
+            official notification before applying.
+        </p>
+
+    </div>
+
+    <div class="center-actions">
+
+        <a class="btn ghost dark" href="/">
+            ← Check another student
+        </a>
+
+    </div>
+
+</main>
+
+<footer>
+
+    <a class="brand" href="/">✦ ScholarBridge</a>
+
+    <span>
+        Built for Karnataka students.
+    </span>
+
+</footer>
 
 </body>
 </html>

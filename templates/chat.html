@@ -1,0 +1,108 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ScholarBridge AI Assistant</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='chat.css') }}">
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <a href="/" class="brand">🎓 ScholarBridge</a>
+        <a href="/" class="back-link">← Back to Home</a>
+    </nav>
+
+    <main class="chat-container">
+
+        <div class="welcome">
+            <div class="robot">🤖</div>
+
+            <h1>ScholarBridge AI Assistant</h1>
+
+            <p>
+                Your personal assistant for scholarships,
+                government schemes and student support.
+            </p>
+        </div>
+
+        <section class="chatbox">
+
+            <div class="chat-header">
+                <div>
+                    <h3>ScholarBridge Assistant</h3>
+                    <span class="online">● Online</span>
+                </div>
+            </div>
+
+            <div class="messages" id="messages">
+
+                <div class="message bot">
+                    <div class="avatar">🤖</div>
+
+                    <div class="bubble">
+                        Hello! 👋 Welcome to ScholarBridge.
+
+                        I'm here to help you discover scholarships,
+                        understand eligibility requirements and learn
+                        about government schemes.
+
+                        How can I help you today?
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="suggestions">
+                <button type="button" onclick="sendSuggestion('Find scholarships for engineering students')">
+                    🎓 Engineering scholarships
+                </button>
+
+                <button type="button" onclick="sendSuggestion('What documents are required for scholarships?')">
+                    📄 Required documents
+                </button>
+
+                <button type="button" onclick="sendSuggestion('What is the income limit for scholarships?')">
+                    💰 Income limits
+                </button>
+
+                <button type="button" onclick="sendSuggestion('How can I apply for scholarships?')">
+                    📝 Application process
+                </button>
+            </div>
+
+            <form id="chatForm">
+
+                <input
+                    type="text"
+                    id="userInput"
+                    placeholder="Ask anything about scholarships..."
+                    autocomplete="off"
+                    required
+                >
+
+                <button type="submit" id="sendButton">
+                    Send ➤
+                </button>
+
+            </form>
+
+            <p class="chat-note">
+                AI-generated answers may require verification.
+                Always check official scholarship websites.
+            </p>
+
+        </section>
+
+    </main>
+
+    <script src="{{ url_for('static', filename='chat.js') }}"></script>
+
+</body>
+</html>
+
